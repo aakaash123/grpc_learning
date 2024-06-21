@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package auth;
+
+service AuthService {
+  rpc varify (MobileNumber) returns (DoesMobileNumberExist);
+  rpc generateOtp (MobileNumber) returns (OTP);
+  rpc validateOtp (OTPWithMobileNumber) returns (IsValidated);
+}
+
+message MobileNumber {
+  string number = 1;
+}
+
+message OTP {
+  int32 otp = 1;
+}
+
+message DoesMobileNumberExist {
+  bool exists = 1;
+}
+
+message OTPWithMobileNumber {
+  int32 otp = 1;
+  string number = 2;
+}
+
+message IsValidated {
+  bool validated = 1;
+}
